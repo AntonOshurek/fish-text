@@ -1,11 +1,11 @@
 {
   "name": "fish-text",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "generate fish text",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "browser-sync start --server --no-ui --files \"js/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -14,14 +14,22 @@
   "keywords": [
     "fish",
     "text",
+    "fish text",
     "lorem",
     "ipsum",
-    "lorem"
+    "lorem ipsum",
+    "text for dev",
+    "Mock object",
+    "Mock text",
+    "real text"
   ],
   "author": "Anton Oshurek",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AntonOshurek/fish-text/issues"
   },
-  "homepage": "https://github.com/AntonOshurek/fish-text#readme"
+  "homepage": "https://github.com/AntonOshurek/fish-text#readme",
+  "devDependencies": {
+    "browser-sync": "^2.27.7"
+  }
 }
