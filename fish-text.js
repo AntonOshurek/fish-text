@@ -253,7 +253,7 @@ const getRandomInt = (minValue, maxValue) => {
   return Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
 };
 
-const fishText = {
+export const fishText = {
 
   'getWords': (count, repeat = false) => {
     let yourWords = [];
