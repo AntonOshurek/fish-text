@@ -9,8 +9,8 @@ const getRandomInt = (minValue, maxValue) => {
   return Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
 };
 
-const checkTextDataType = (parametr, data, functionName) => {
-  switch (parametr) {
+const checkTextDataType = (dataType, data, functionName) => {
+  switch (dataType) {
     case 'string':
       return data.join(' ').toLowerCase();
     break;
@@ -34,7 +34,13 @@ const checkCountLength = (count, functionName) => {
 
 const fishText = {
 
-  'getWords': (wordsCount, textDataType = 'string', repeat = false) => {
+  'getWords': (options) => {
+    let {wordsCount, dataType = 'string', repeat = false} = options;
+
+    if(!wordsCount) {
+      console.error('wordsCount parameters is required! example - fishText.getWords({wordsCount: 25})')
+    }
+
     let yourWords = [];
 
     if(repeat && checkCountLength(wordsCount, 'getWords')) {
@@ -55,9 +61,15 @@ const fishText = {
       }
     };
 
-    return checkTextDataType(textDataType, yourWords, 'getWords');
+    return checkTextDataType(dataType, yourWords, 'getWords');
   },
-  'getRandomRangeWords': (min, max, textDataType = 'string', repeat = false) => {
+  'getRandomRangeWords': (options) => {
+    let {min, max, dataType = 'string', repeat = false} = options;
+
+    if(!min || !max) {
+      console.error('min and max parameters is required! example - getRandomRangeWords({min: 10, max: 20})')
+    }
+
     const wordsCount = getRandomInt(min, max);
     let yourWords = [];
 
@@ -79,15 +91,13 @@ const fishText = {
       }
     };
 
-    return checkTextDataType(textDataType, yourWords, 'getRandomRangeWords');
-
-
+    return checkTextDataType(dataType, yourWords, 'getRandomRangeWords');
   },
 
 };
 
 // export { fishText };
 
-let result = fishText.getRandomRangeWords(10, 20, 'array');
+let result = fishText.getWords({wordsCount: 25, dataType: 'string'});
 
 console.log(result)
