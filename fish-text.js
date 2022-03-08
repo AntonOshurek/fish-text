@@ -17,22 +17,31 @@ const checkTextDataType = (parametr, data, functionName) => {
     case 'array':
       return data;
     break;
+    case 'object':
+      return Object.assign({}, data);;
+    break;
     default:
       console.error(`incorrect text type parametr in ${functionName} function`);
   };
 };
 
+const checkCountLength = (count, functionName) => {
+  if (count > words.length) {
+    console.error(`${functionName} function error - maximum number of words without repetition ` + words.length);
+    return true
+  }
+};
+
 const fishText = {
 
-  'getWords': (count, repeat = false, textDataType = 'string') => {
+  'getWords': (wordsCount, textDataType = 'string', repeat = false) => {
     let yourWords = [];
 
-    if(repeat && count > words.length) {
-      console.error('error' + words.length + " " + count)
+    if(repeat && checkCountLength(wordsCount, 'getWords')) {
       return
     }
 
-    for(let i = 0; i < count; i++) {
+    for(let i = 0; i < wordsCount; i++) {
       const oneWord = words[getRandomInt(0, words.length - 1)];
 
       if(repeat) {
@@ -48,12 +57,11 @@ const fishText = {
 
     return checkTextDataType(textDataType, yourWords, 'getWords');
   },
-  'getRandomRangeWords': (min, max, repeat = false, textDataType = 'string') => {
+  'getRandomRangeWords': (min, max, textDataType = 'string', repeat = false) => {
     const wordsCount = getRandomInt(min, max);
     let yourWords = [];
 
-    if(repeat && wordsCount > words.length) {
-      console.error('error' + words.length + " " + wordsCount)
+    if(repeat && checkCountLength(wordsCount, 'getRandomRangeWords')) {
       return
     }
 
@@ -72,12 +80,14 @@ const fishText = {
     };
 
     return checkTextDataType(textDataType, yourWords, 'getRandomRangeWords');
-  }
+
+
+  },
 
 };
 
 // export { fishText };
 
-let result = fishText.getRandomRangeWords(10, 20, true, 'array');
+let result = fishText.getRandomRangeWords(10, 20, 'array');
 
 console.log(result)
