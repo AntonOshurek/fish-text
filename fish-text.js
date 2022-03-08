@@ -1,4 +1,5 @@
 const words = [
+  // 1952 words
   "ability","able","aboard","about","above","accept","accident","according",
   "account","accurate","acres","across","act","action","active","activity",
   "actual","actually","add","addition","additional","adjective","adult","adventure",
@@ -247,34 +248,69 @@ const words = [
 
 const getRandomInt = (minValue, maxValue) => {
   if((Math.sign(minValue) === -1) || (Math.sign(maxValue) === -1) || minValue >= maxValue) {
-    throw new Error('minValue or maxValue they have the wrong value');
+    throw new Error('minValue or maxValue in fish-text they have the wrong value');
   }
   return Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
 };
 
 const fishText = {
 
-  'getWords': (count) => {
+  'getWords': (count, repeat = false) => {
     let yourWords = [];
+
+    if(repeat && count > words.length) {
+      console.error('error' + words.length + " " + count)
+      return
+    }
 
     for(let i = 0; i < count; i++) {
-      yourWords.push(words[getRandomInt(0, words.length - 1)]);
+      const oneWord = words[getRandomInt(0, words.length - 1)];
+
+      if(repeat) {
+        if (yourWords.some((word) => word === oneWord)) {
+          i--;
+        } else {
+          yourWords.push(oneWord);
+        }
+      } else {
+        yourWords.push(oneWord);
+      }
+
     };
-    return yourWords;
+    return yourWords.join(' ');
   },
-  'getRandomRangeWords': (min, max) => {
+  'getRandomRangeWords': (min, max, repeat = false) => {
+    const wordsCount = getRandomInt(min, max);
     let yourWords = [];
 
-    for(let i = 0; i < getRandomInt(min, max); i++) {
-      yourWords.push(words[getRandomInt(0, words.length - 1)]);
+    if(repeat && wordsCount > words.length) {
+      console.error('error' + words.length + " " + wordsCount)
+      return
+    }
+
+    for(let i = 0; i < wordsCount; i++) {
+      const oneWord = words[getRandomInt(0, words.length - 1)];
+
+      if(repeat) {
+        if (yourWords.some((word) => word === oneWord)) {
+          i--;
+        } else {
+          yourWords.push(oneWord);
+        }
+      } else {
+        yourWords.push(words[getRandomInt(0, words.length - 1)]);
+      }
+
     };
-    return yourWords;
+    console.log(yourWords)
+    return yourWords.join(' ');
   }
 
 };
 
 
 
-let result = fishText.getRandomRangeWords(200, 1000);
+let result = fishText.getRandomRangeWords(1500, 1952, true);
 
-console.log(result.join(' '));
+console.log(result);
+
