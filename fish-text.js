@@ -275,9 +275,9 @@ const fishText = {
       } else {
         yourWords.push(oneWord);
       }
-
     };
-    return yourWords.join(' ');
+
+    return yourWords.join(' ').toLowerCase();
   },
   'getRandomRangeWords': (min, max, repeat = false) => {
     const wordsCount = getRandomInt(min, max);
@@ -300,17 +300,11 @@ const fishText = {
       } else {
         yourWords.push(words[getRandomInt(0, words.length - 1)]);
       }
-
     };
-    console.log(yourWords)
-    return yourWords.join(' ');
+
+    return yourWords.join(' ').toLowerCase();
   }
 
 };
 
-
-
-let result = fishText.getRandomRangeWords(1500, 1952, true);
-
-console.log(result);
-
+// let result = fishText.getRandomRangeWords(1500, 1952, true);
