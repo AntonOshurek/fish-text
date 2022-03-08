@@ -87,7 +87,7 @@ const fishText = {
           yourWords.push(oneWord);
         }
       } else {
-        yourWords.push(words[getRandomInt(0, words.length - 1)]);
+        yourWords.push(oneWord);
       }
     };
 
@@ -98,6 +98,6 @@ const fishText = {
 
 // export { fishText };
 
-let result = fishText.getWords({wordsCount: 25, dataType: 'string'});
+let result = fishText.getWords({wordsCount: -25, dataType: 'string'});
 
 console.log(result)
