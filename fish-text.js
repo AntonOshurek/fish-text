@@ -1,5 +1,7 @@
 import { ENGLISH_WORDS } from "./eng-words.js";
 
+import { rusWords } from './rus-words.js';
+
 const words = ENGLISH_WORDS;
 
 const getRandomInt = (minValue, maxValue) => {
@@ -98,6 +100,14 @@ const fishText = {
 
 // export { fishText };
 
-let result = fishText.getWords({wordsCount: -25, dataType: 'string'});
+let result = fishText.getWords({wordsCount: 25, dataType: 'string'});
 
 console.log(result)
+
+let foo;
+
+for(let i = 1; i < 100; i++) {
+  foo += rusWords[i] + ' ';
+}
+
+console.log(foo)
