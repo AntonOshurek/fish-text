@@ -33,24 +33,29 @@ import { fishText } from '../node_modules/fish-text/fish-text.js';
 
 1. ### get a certain number of words
 
+**Method ```getWords()```**
+*you will get exactly as many words as you write in the parameters*
+
+*let's try to get 80 English words in the array:)*
 * **example!**
 ```
   let text = fishText.getWords({wordsCount: 80, dataType: 'array', lang: 'eng', repeat: false});
 
   console.log(text);
 ```
-result
+***result***
+
 ![getWords function result](./readme-images/example--result-getWords.png)
 
-#### params
-* wordsCount - number of words
+#### **params**
+* **```wordsCount```** - number of words
   **this is a required parameter!**
-* dataType - data type to be returned.
+* **```dataType```** - data type to be returned.
   **optional** parameter! the default data type is ```string```.
   there are 3 data options: ```string```, ```array```, ```object```
-* lang - ```'eng'``` or ```'rus'```
+* **```lang```** - ```'eng'``` or ```'rus'```
   **optional parameter!** the default language is English.
-* repeat - ```true``` or ```false```
-  **optional parameter! Default value is ```false```**
+* **```repeat```** - ```true``` or ```false```
+  **optional parameter! Default value is** ```false```
   if you need all words to be unique, then set the parameter ```true```, and vice versa.
   **Attention!** with the "repeat" parameter enabled, it is impossible to get unique words in an amount exceeding the number of words in the library!
