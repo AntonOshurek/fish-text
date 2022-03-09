@@ -5,7 +5,8 @@ let words = ENGLISH_WORDS;
 
 const getRandomInt = (minValue, maxValue) => {
   if((Math.sign(minValue) === -1) || (Math.sign(maxValue) === -1) || minValue >= maxValue) {
-    throw new Error('minValue or maxValue in fish-text they have the wrong value');
+    console.error('minValue or maxValue in fish-text they have the wrong value');
+    return;
   }
   return Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
 };
@@ -38,7 +39,7 @@ const checkLanguage = (lang, functionName) => {
     default:
       console.error(`incorrect language name in ${functionName} function! example - fishText.${functionName}({wordsCount: 25, lang: 'rus'})`);
   }
-}
+};
 
 const checkCountLength = (count, functionName) => {
   if (count > words.length) {
@@ -47,17 +48,50 @@ const checkCountLength = (count, functionName) => {
   }
 };
 
+const checkMinMaxValidate = (min, max) => {
+  if((!min || !max) && (min != 0 && max != 0)) {
+    console.error('min and max parameters is required! example - getRandomRangeWords({min: 10, max: 20})');
+    return false;
+  };
+
+  if(Math.sign(min) === -1 || Math.sign(max) === -1 ) {
+    console.error(`min: ${min} max: ${max} ERROR! parameters cannot be negative! example - fishText.getRandomRangeWords({min: 10, max: 20})`);
+    return false;
+  }
+
+  if(min > max) {
+    console.error(`min: ${min} > max: ${max} ERROR! the maximum number cannot be less than the minimum! example - fishText.getRandomRangeWords({min: 10, max: 20})`);
+    return false;
+  }
+
+  return true;
+};
+
+const checkWordsCountValidate = (wordsCount) => {
+  if(!wordsCount) {
+    console.error('wordsCount parameters is required! example - fishText.getWords({wordsCount: 25})');
+    return false;
+  }
+
+  if(Math.sign(wordsCount) === -1 || Math.sign(wordsCount) === -0) {
+    console.error(`wordsCount:  ${wordsCount} ERROR! parameters cannot be negative! example - fishText.getWords({wordsCount: 25})`);
+    return false;
+  }
+
+  return true;
+};
+
 const fishText = {
 
   'getWords': (options) => {
     let {wordsCount, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
-    if(!wordsCount) {
-      console.error('wordsCount parameters is required! example - fishText.getWords({wordsCount: 25})')
-    }
+    if (!checkWordsCountValidate(wordsCount)) {
+      return
+    };
 
     if(repeat && checkCountLength(wordsCount, 'getWords')) {
-      return
+      return;
     }
 
     checkLanguage(lang, 'getWords');
@@ -83,12 +117,12 @@ const fishText = {
   'getRandomRangeWords': (options) => {
     let {min, max, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
-    if(!min || !max) {
-      console.error('min and max parameters is required! example - getRandomRangeWords({min: 10, max: 20})')
-    }
+    if(!checkMinMaxValidate(min, max)) {
+      return;
+    };
 
     if(repeat && checkCountLength(wordsCount, 'getRandomRangeWords')) {
-      return
+      return;
     }
 
     checkLanguage(lang, 'getRandomRangeWords');
@@ -117,6 +151,6 @@ const fishText = {
 
 // export { fishText };
 
-let result = fishText.getWords({wordsCount: 500, dataType: 'string', lang: 'rus'});
+let result = fishText.getWords({wordsCount: 10, dataType: 'string', lang: 'rus'});
 
 console.log(result)
