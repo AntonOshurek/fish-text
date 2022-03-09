@@ -1,8 +1,7 @@
 import { ENGLISH_WORDS } from "./eng-words.js";
+import { RUSSIAN_WORDS } from './rus-words.js';
 
-import { rusWords } from './rus-words.js';
-
-const words = ENGLISH_WORDS;
+let words = ENGLISH_WORDS;
 
 const getRandomInt = (minValue, maxValue) => {
   if((Math.sign(minValue) === -1) || (Math.sign(maxValue) === -1) || minValue >= maxValue) {
@@ -27,6 +26,20 @@ const checkTextDataType = (dataType, data, functionName) => {
   };
 };
 
+const checkLanguage = (lang, functionName) => {
+  // let words;
+  switch(lang) {
+    case 'rus':
+      words = RUSSIAN_WORDS;
+    break;
+    case 'eng':
+      words = ENGLISH_WORDS;
+    break;
+    default:
+      console.error(`incorrect language name in ${functionName} function! example - fishText.${functionName}({wordsCount: 25, lang: 'rus'})`);
+  }
+}
+
 const checkCountLength = (count, functionName) => {
   if (count > words.length) {
     console.error(`${functionName} function error - maximum number of words without repetition ` + words.length);
@@ -37,17 +50,19 @@ const checkCountLength = (count, functionName) => {
 const fishText = {
 
   'getWords': (options) => {
-    let {wordsCount, dataType = 'string', repeat = false} = options;
+    let {wordsCount, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
     if(!wordsCount) {
       console.error('wordsCount parameters is required! example - fishText.getWords({wordsCount: 25})')
     }
 
-    let yourWords = [];
-
     if(repeat && checkCountLength(wordsCount, 'getWords')) {
       return
     }
+
+    checkLanguage(lang, 'getWords');
+
+    let yourWords = [];
 
     for(let i = 0; i < wordsCount; i++) {
       const oneWord = words[getRandomInt(0, words.length - 1)];
@@ -66,18 +81,20 @@ const fishText = {
     return checkTextDataType(dataType, yourWords, 'getWords');
   },
   'getRandomRangeWords': (options) => {
-    let {min, max, dataType = 'string', repeat = false} = options;
+    let {min, max, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
     if(!min || !max) {
       console.error('min and max parameters is required! example - getRandomRangeWords({min: 10, max: 20})')
     }
 
-    const wordsCount = getRandomInt(min, max);
-    let yourWords = [];
-
     if(repeat && checkCountLength(wordsCount, 'getRandomRangeWords')) {
       return
     }
+
+    checkLanguage(lang, 'getRandomRangeWords');
+
+    const wordsCount = getRandomInt(min, max);
+    let yourWords = [];
 
     for(let i = 0; i < wordsCount; i++) {
       const oneWord = words[getRandomInt(0, words.length - 1)];
@@ -100,14 +117,6 @@ const fishText = {
 
 // export { fishText };
 
-let result = fishText.getWords({wordsCount: 25, dataType: 'string'});
+let result = fishText.getWords({wordsCount: 500, dataType: 'string', lang: 'rus'});
 
 console.log(result)
-
-let foo;
-
-for(let i = 1; i < 100; i++) {
-  foo += rusWords[i] + ' ';
-}
-
-console.log(foo)
