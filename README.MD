@@ -64,7 +64,7 @@ import { fishText } from '../node_modules/fish-text/fish-text.js';
 
   ***
 
-  1. ### Get a random number of words from a range.
+  2. ### Get a random number of words from a range.
 
   **Method ```getRandomRangeWords()```**
 *You set 2 parameters - the minimum number and the maximum, and get a random number of words in the given range.*
