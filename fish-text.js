@@ -93,8 +93,8 @@ const fishText = {
 
 };
 
-// export { fishText };
+export { fishText };
 
-let result = fishText.getWords({wordsCount: 100, dataType: 'string', lang: 'eng'});
-
-console.log(result)
+// for testing
+// let result = fishText.getWords({wordsCount: 100, dataType: 'string', lang: 'eng'});
+// console.log(result)
