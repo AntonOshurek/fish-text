@@ -1,9 +1,14 @@
-import { ENGLISH_WORDS } from "./words/eng-words.js";
+// WORDS
+import { ENGLISH_WORDS } from './words/eng-words.js';
 import { RUSSIAN_WORDS } from './words/rus-words.js';
+// CITIES
+import { CITIES_RUS } from './cities/cities-rus.js';
+import { CITIES_ENG } from './cities/cities-eng.js';
 
 import { checkMinMaxValidate, checkWordsCountValidate, getRandomInt, checkTextDataType } from './utils.js';
 
 let words = ENGLISH_WORDS;
+let cities = CITIES_ENG;
 
 const checkLanguage = (lang, functionName) => {
   switch(lang) {
@@ -90,11 +95,36 @@ const fishText = {
 
     return checkTextDataType(dataType, yourWords, 'getRandomRangeWords');
   },
+  'getCity': (options) => {
 
+    const {lang = 'eng'} = options;
+
+    let city;
+
+    switch (lang) {
+      case 'rus':
+        cities = CITIES_RUS;
+      break;
+      case 'eng':
+        cities = CITIES_ENG;
+      break;
+      default:
+        console.error(`incorrect language name in ...`);
+    };
+
+    city = cities[getRandomInt(0, cities.length)];
+
+    return city;
+
+  },
 };
 
 // export { fishText };
 
-// for testing
-  let result = fishText.getWords({wordsCount: 100, dataType: 'string', lang: 'eng'});
-  console.log(result)
+// for testing words
+  // let result = fishText.getWords({wordsCount: 100, dataType: 'string', lang: 'eng'});
+  // console.log(result)
+
+// for testing cities
+
+console.log(fishText.getCity({lang: 'rus'}));

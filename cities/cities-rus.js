@@ -1,4 +1,4 @@
-const CITIES_RUS = [
+export const CITIES_RUS = [
 'Аба',
 'Абиджан',
 'Абу-Даби',
