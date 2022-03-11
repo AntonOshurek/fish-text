@@ -30,6 +30,8 @@ const fishText = {
   'getWords': (options) => {
     let {wordsCount, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
+    let yourWords = [];
+
     if (!checkWordsCountValidate(wordsCount)) {
       return
     };
@@ -39,8 +41,6 @@ const fishText = {
     }
 
     checkLanguage(lang, 'getWords');
-
-    let yourWords = [];
 
     for(let i = 0; i < wordsCount; i++) {
       const oneWord = words[getRandomInt(0, words.length - 1)];
@@ -61,6 +61,9 @@ const fishText = {
   'getRandomRangeWords': (options) => {
     let {min, max, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
+    const wordsCount = getRandomInt(min, max);
+    let yourWords = [];
+
     if(!checkMinMaxValidate(min, max)) {
       return;
     };
@@ -70,9 +73,6 @@ const fishText = {
     }
 
     checkLanguage(lang, 'getRandomRangeWords');
-
-    const wordsCount = getRandomInt(min, max);
-    let yourWords = [];
 
     for(let i = 0; i < wordsCount; i++) {
       const oneWord = words[getRandomInt(0, words.length - 1)];
