@@ -23,9 +23,9 @@ const checkLanguage = (lang, functionName) => {
   }
 };
 
-const checkCountLength = (count, functionName) => {
-  if (count > words.length) {
-    console.error(`${functionName} function error - maximum number of words without repetition ` + words.length);
+const checkCountLength = (count, functionName, arrayToCheck) => {
+  if (count > arrayToCheck) {
+    console.error(`${functionName} function error - maximum number of words without repetition ` + arrayToCheck);
     return true
   }
 };
@@ -43,7 +43,7 @@ const fishText = {
       return
     };
 
-    if(repeat && checkCountLength(wordsCount, 'getWords')) {
+    if(repeat && checkCountLength(wordsCount, 'getWords', words.length)) {
       return;
     }
 
@@ -66,16 +66,17 @@ const fishText = {
   'getRandomRangeWords': (options) => {
     let {min, max, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
-    const wordsCount = getRandomInt(min, max);
     let yourWords = [];
 
     if(!checkMinMaxValidate(min, max)) {
       return;
     };
 
+    const wordsCount = getRandomInt(min, max);
+
     checkLanguage(lang, 'getRandomRangeWords');
 
-    if(repeat && checkCountLength(wordsCount, 'getRandomRangeWords')) {
+    if(repeat && checkCountLength(wordsCount, 'getRandomRangeWords', words.length)) {
       return;
     }
 
@@ -99,32 +100,44 @@ const fishText = {
 
     const {lang = 'eng'} = options;
 
-    let city;
+    let yourCity;
 
-    switch (lang) {
-      case 'rus':
-        cities = CITIES_RUS;
-      break;
-      case 'eng':
-        cities = CITIES_ENG;
-      break;
-      default:
-        console.error(`incorrect language name in ...`);
+    // switch (lang) {
+    //   case 'rus':
+    //     cities = CITIES_RUS;
+    //   break;
+    //   case 'eng':
+    //     cities = CITIES_ENG;
+    //   break;
+    //   default:
+    //     console.error(`incorrect language name in ...`);
+    // };
+
+    lang === 'rus' ? cities = CITIES_RUS : cities = CITIES_ENG;
+
+    yourCity = cities[getRandomInt(0, cities.length)];
+
+    return yourCity;
+
+  },
+  'getCities': (options) => {
+    const {min, max, dataType = 'string', repeat = false, lang = 'eng'} = options;
+
+    if(!checkMinMaxValidate(min, max)) {
+      return;
     };
 
-    city = cities[getRandomInt(0, cities.length)];
-
-    return city;
-
+    const citiesCount = getRandomInt(min, max);
+    let yourCities = [];
   },
 };
 
 // export { fishText };
 
 // for testing words
-  // let result = fishText.getWords({wordsCount: 100, dataType: 'string', lang: 'eng'});
+  // let result = fishText.getWords({wordsCount: 2000, dataType: 'string', lang: 'eng', repeat: true});
   // console.log(result)
 
 // for testing cities
 
-console.log(fishText.getCity({lang: 'rus'}));
+console.log(fishText.getCity({lang: 'eng'}));
