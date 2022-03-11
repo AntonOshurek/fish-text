@@ -32,6 +32,8 @@ const fishText = {
 
     let yourWords = [];
 
+    checkLanguage(lang, 'getWords');
+
     if (!checkWordsCountValidate(wordsCount)) {
       return
     };
@@ -39,8 +41,6 @@ const fishText = {
     if(repeat && checkCountLength(wordsCount, 'getWords')) {
       return;
     }
-
-    checkLanguage(lang, 'getWords');
 
     for(let i = 0; i < wordsCount; i++) {
       const oneWord = words[getRandomInt(0, words.length - 1)];
@@ -68,11 +68,11 @@ const fishText = {
       return;
     };
 
+    checkLanguage(lang, 'getRandomRangeWords');
+
     if(repeat && checkCountLength(wordsCount, 'getRandomRangeWords')) {
       return;
     }
-
-    checkLanguage(lang, 'getRandomRangeWords');
 
     for(let i = 0; i < wordsCount; i++) {
       const oneWord = words[getRandomInt(0, words.length - 1)];
