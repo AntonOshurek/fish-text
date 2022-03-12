@@ -95,21 +95,43 @@ const fishText = {
   'getCities': (options) => {
     const {min, max, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
+    lang === 'rus' ? cities = CITIES_RUS : cities = CITIES_ENG;
+
     if(!checkMinMaxValidate(min, max)) {
       return;
     };
 
     const citiesCount = getRandomInt(min, max);
     let yourCities = [];
+
+    if(repeat && checkCountLength(citiesCount, 'getRandomRangeWords', cities.length)) {
+      return;
+    }
+
+    for(let i = 0; i < citiesCount; i++) {
+      const oneCity = cities[getRandomInt(0, cities.length - 1)];
+
+      if(repeat) {
+        if (yourCities.some((word) => word === oneCity)) {
+          i--;
+        } else {
+          yourCities.push(oneCity);
+        }
+      } else {
+        yourCities.push(oneCity);
+      }
+    };
+
+    return checkTextDataType(dataType, yourCities, 'getCities');
   },
 };
 
 // export { fishText };
 
 // for testing words
-  let result = fishText.getRandomRangeWords({min: 100, max: 150, dataType: 'array', lang: 'eng', repeat: true});
-  console.log(result)
+  // let result = fishText.getRandomRangeWords({min: 100, max: 150, dataType: 'array', lang: 'eng', repeat: true});
+  // console.log(result)
 
 // for testing cities
 
-console.log(fishText.getCity({lang: 'eng'}));
+console.log(fishText.getCities({min: 50, max: 100, lang: 'eng', dataType: 'array', repeat: true}));
