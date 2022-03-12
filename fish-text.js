@@ -13,19 +13,6 @@ import { checkMinMaxValidate, checkWordsCountValidate, getRandomInt, checkTextDa
 let words = ENGLISH_WORDS;
 let cities = CITIES_ENG;
 
-const checkLanguage = (lang, functionName) => {
-  switch(lang) {
-    case 'rus':
-      words = RUSSIAN_WORDS;
-    break;
-    case 'eng':
-      words = ENGLISH_WORDS;
-    break;
-    default:
-      console.error(`incorrect language name in ${functionName} function! example - fishText.${functionName}({wordsCount: 25, lang: 'rus'})`);
-  }
-};
-
 const checkCountLength = (count, functionName, arrayToCheck) => {
   if (count > arrayToCheck) {
     console.error(`${functionName} function error - maximum number of words without repetition ` + arrayToCheck);
@@ -40,7 +27,7 @@ const fishText = {
 
     let yourWords = [];
 
-    checkLanguage(lang, 'getWords');
+    lang === 'rus' ? words = RUSSIAN_WORDS : words = ENGLISH_WORDS;
 
     if (!checkWordsCountValidate(wordsCount)) {
       return
@@ -71,13 +58,13 @@ const fishText = {
 
     let yourWords = [];
 
+    lang === 'rus' ? words = RUSSIAN_WORDS : words = ENGLISH_WORDS;
+
     if(!checkMinMaxValidate(min, max)) {
       return;
     };
 
     const wordsCount = getRandomInt(min, max);
-
-    checkLanguage(lang, 'getRandomRangeWords');
 
     if(repeat && checkCountLength(wordsCount, 'getRandomRangeWords', words.length)) {
       return;
@@ -105,17 +92,6 @@ const fishText = {
 
     let yourCity;
 
-    // switch (lang) {
-    //   case 'rus':
-    //     cities = CITIES_RUS;
-    //   break;
-    //   case 'eng':
-    //     cities = CITIES_ENG;
-    //   break;
-    //   default:
-    //     console.error(`incorrect language name in ...`);
-    // };
-
     lang === 'rus' ? cities = CITIES_RUS : cities = CITIES_ENG;
 
     yourCity = cities[getRandomInt(0, cities.length)];
@@ -138,8 +114,8 @@ const fishText = {
 // export { fishText };
 
 // for testing words
-  // let result = fishText.getWords({wordsCount: 2000, dataType: 'string', lang: 'eng', repeat: true});
-  // console.log(result)
+  let result = fishText.getRandomRangeWords({min: 100, max: 150, dataType: 'array', lang: 'rus', repeat: true});
+  console.log(result)
 
 // for testing cities
 
