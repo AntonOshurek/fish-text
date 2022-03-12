@@ -1,32 +1,27 @@
-const checkWordsCountValidate = (wordsCount) => {
-  if(!wordsCount) {
-    console.error('wordsCount parameters is required! example - fishText.getWords({wordsCount: 25})');
+const checkCountValidate = (count, functionName = 'getCities') => {
+  if(Math.sign(count) === -1 || Math.sign(count) === -0) {
+    console.error(`count: ${count} ERROR! parameters cannot be negative! example - fishText.${functionName}({count: 25})`);
     return false;
-  }
-
-  if(Math.sign(wordsCount) === -1 || Math.sign(wordsCount) === -0) {
-    console.error(`wordsCount:  ${wordsCount} ERROR! parameters cannot be negative! example - fishText.getWords({wordsCount: 25})`);
-    return false;
-  }
+  };
 
   return true;
 };
 
-const checkMinMaxValidate = (min, max) => {
+const checkMinMaxValidate = (min, max, functionName = 'getCities') => {
   if((!min || !max) && (min != 0 && max != 0)) {
-    console.error('min and max parameters is required! example - getRandomRangeWords({min: 10, max: 20})');
+    console.error(`${functionName} ERROR! min and max parameters is required! example - fishText.${functionName}({min: 10, max: 20})`);
     return false;
   };
 
   if(Math.sign(min) === -1 || Math.sign(max) === -1 ) {
-    console.error(`min: ${min} max: ${max} ERROR! parameters cannot be negative! example - fishText.getRandomRangeWords({min: 10, max: 20})`);
+    console.error(`min: ${min} max: ${max} ERROR! parameters cannot be negative! example - fishText.${functionName}({min: 10, max: 20})`);
     return false;
-  }
+  };
 
   if(min > max) {
-    console.error(`min: ${min} > max: ${max} ERROR! the maximum number cannot be less than the minimum! example - fishText.getRandomRangeWords({min: 10, max: 20})`);
+    console.error(`min: ${min} > max: ${max} ERROR! the maximum number cannot be less than the minimum! example - fishText.${functionName}({min: 10, max: 20})`);
     return false;
-  }
+  };
 
   return true;
 };
@@ -47,20 +42,20 @@ const checkTextDataType = (dataType, data, functionName) => {
   };
 };
 
-const checkCountLength = (count, functionName, arrayToCheck) => {
+const checkCountLength = (count, functionName, dataName, arrayToCheck) => {
   if (count > arrayToCheck) {
-    console.error(`${functionName} function error - maximum number of words without repetition ` + arrayToCheck);
-    return true
-  }
+    console.error(`${functionName} function error - maximum number of ${dataName} without repetition ` + arrayToCheck);
+    return true;
+  };
 };
 
 const getRandomInt = (minValue, maxValue) => {
   if((Math.sign(minValue) === -1) || (Math.sign(maxValue) === -1) || minValue >= maxValue) {
     console.error('minValue or maxValue in fish-text they have the wrong value');
     return;
-  }
+  };
   return Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
 };
 
 
-export { checkMinMaxValidate, checkWordsCountValidate, getRandomInt, checkTextDataType, checkCountLength };
+export { checkMinMaxValidate, checkCountValidate, getRandomInt, checkTextDataType, checkCountLength };
