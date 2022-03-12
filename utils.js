@@ -47,6 +47,13 @@ const checkTextDataType = (dataType, data, functionName) => {
   };
 };
 
+const checkCountLength = (count, functionName, arrayToCheck) => {
+  if (count > arrayToCheck) {
+    console.error(`${functionName} function error - maximum number of words without repetition ` + arrayToCheck);
+    return true
+  }
+};
+
 const getRandomInt = (minValue, maxValue) => {
   if((Math.sign(minValue) === -1) || (Math.sign(maxValue) === -1) || minValue >= maxValue) {
     console.error('minValue or maxValue in fish-text they have the wrong value');
@@ -56,4 +63,4 @@ const getRandomInt = (minValue, maxValue) => {
 };
 
 
-export { checkMinMaxValidate, checkWordsCountValidate, getRandomInt, checkTextDataType };
+export { checkMinMaxValidate, checkWordsCountValidate, getRandomInt, checkTextDataType, checkCountLength };
