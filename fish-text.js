@@ -1,6 +1,6 @@
 // WORDS
-import { ENGLISH_WORDS } from './words/eng-words.js';
-import { RUSSIAN_WORDS } from './words/rus-words.js';
+import { WORDS_ENG } from './words/words-eng.js';
+import { WORDS_RUS } from './words/words-rus.js';
 // CITIES
 import { CITIES_RUS } from './cities/cities-rus.js';
 import { CITIES_ENG } from './cities/cities-eng.js';
@@ -8,17 +8,10 @@ import { CITIES_ENG } from './cities/cities-eng.js';
 import { COUNTRIES_RUS } from './countries/countries-rus.js';
 import { COUNTRIES_ENG } from './countries/countries-eng.js';
 
-import { checkMinMaxValidate, checkWordsCountValidate, getRandomInt, checkTextDataType } from './utils.js';
+import { checkMinMaxValidate, checkWordsCountValidate, getRandomInt, checkTextDataType, checkCountLength } from './utils.js';
 
-let words = ENGLISH_WORDS;
+let words = WORDS_ENG;
 let cities = CITIES_ENG;
-
-const checkCountLength = (count, functionName, arrayToCheck) => {
-  if (count > arrayToCheck) {
-    console.error(`${functionName} function error - maximum number of words without repetition ` + arrayToCheck);
-    return true
-  }
-};
 
 const fishText = {
 
@@ -27,7 +20,7 @@ const fishText = {
 
     let yourWords = [];
 
-    lang === 'rus' ? words = RUSSIAN_WORDS : words = ENGLISH_WORDS;
+    lang === 'rus' ? words = WORDS_RUS : words = WORDS_ENG;
 
     if (!checkWordsCountValidate(wordsCount)) {
       return
@@ -58,7 +51,7 @@ const fishText = {
 
     let yourWords = [];
 
-    lang === 'rus' ? words = RUSSIAN_WORDS : words = ENGLISH_WORDS;
+    lang === 'rus' ? words = WORDS_RUS : words = WORDS_ENG;
 
     if(!checkMinMaxValidate(min, max)) {
       return;
@@ -114,7 +107,7 @@ const fishText = {
 // export { fishText };
 
 // for testing words
-  let result = fishText.getRandomRangeWords({min: 100, max: 150, dataType: 'array', lang: 'rus', repeat: true});
+  let result = fishText.getRandomRangeWords({min: 100, max: 150, dataType: 'array', lang: 'eng', repeat: true});
   console.log(result)
 
 // for testing cities

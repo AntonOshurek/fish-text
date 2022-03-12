@@ -1,4 +1,4 @@
-const ENGLISH_WORDS = [
+export const WORDS_ENG = [
   // 1952 words
   "ability","able","aboard","about","above","accept","accident","according",
   "account","accurate","acres","across","act","action","active","activity",
@@ -245,5 +245,3 @@ const ENGLISH_WORDS = [
   "year","yellow","yes","yesterday","yet","you","young","younger",
   "your","yourself","youth","zero","zebra","zipper","zoo","zulu"
 ];
-
-export { ENGLISH_WORDS };
