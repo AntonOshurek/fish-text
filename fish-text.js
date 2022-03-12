@@ -4,6 +4,9 @@ import { RUSSIAN_WORDS } from './words/rus-words.js';
 // CITIES
 import { CITIES_RUS } from './cities/cities-rus.js';
 import { CITIES_ENG } from './cities/cities-eng.js';
+//COUNTRIES
+import { COUNTRIES_RUS } from './countries/countries-rus.js';
+import { COUNTRIES_ENG } from './countries/countries-eng.js';
 
 import { checkMinMaxValidate, checkWordsCountValidate, getRandomInt, checkTextDataType } from './utils.js';
 
