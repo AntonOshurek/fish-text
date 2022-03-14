@@ -16,7 +16,7 @@ let countries = COUNTRIES_ENG;
 
 const fishText = {
 
-  'getWords': (options) => {
+  'getWords': (...options) => {
     let {count = 1, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
     let yourWords = [];
@@ -47,7 +47,7 @@ const fishText = {
 
     return checkTextDataType(dataType, yourWords, 'getWords');
   },
-  'getRandomRangeWords': (options) => {
+  'getRandomRangeWords': (...options) => {
     let {min, max, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
     let yourWords = [];
@@ -81,7 +81,7 @@ const fishText = {
 
     return checkTextDataType(dataType, yourWords, 'getRandomRangeWords');
   },
-  'getCities': (options) => {
+  'getCities': (...options) => {
     const {count = 1, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
     let yourCities = [];
@@ -112,7 +112,7 @@ const fishText = {
 
     return checkTextDataType(dataType, yourCities, 'getCities');
   },
-  'getRandomRangeCities': (options) => {
+  'getRandomRangeCities': (...options) => {
     const {min, max, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
     let count;
@@ -177,7 +177,7 @@ const fishText = {
 
     return checkTextDataType(dataType, yourCountries, 'getCountries');
   },
-  'getRandomRangeCountries': (options) => {
+  'getRandomRangeCountries': (...options) => {
     const {min, max, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
     let count;
