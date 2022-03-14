@@ -146,7 +146,7 @@ const fishText = {
 
     return checkTextDataType(dataType, yourCities, 'getRandomRangeCities');
   },
-  'getCountries': (options) => {
+  'getCountries': (...options) => {
     const {count = 1, dataType = 'string', repeat = false, lang = 'eng'} = options;
 
     let yourCountries = [];
@@ -177,6 +177,40 @@ const fishText = {
 
     return checkTextDataType(dataType, yourCountries, 'getCountries');
   },
+  'getRandomRangeCountries': (options) => {
+    const {min, max, dataType = 'string', repeat = false, lang = 'eng'} = options;
+
+    let count;
+    let yourCountries = [];
+
+    lang === 'rus' ? countries = COUNTRIES_RUS : countries = COUNTRIES_ENG;
+
+    if(!checkMinMaxValidate(min, max, 'getRandomRangeCountries')) {
+      return;
+    } else {
+      count = getRandomInt(min, max);
+    };
+
+    if(repeat && checkCountLength(count, 'getRandomRangeCountries', 'country', countries.length)) {
+      return;
+    };
+
+    for(let i = 0; i < count; i++) {
+      const oneCountry = countries[getRandomInt(0, countries.length - 1)];
+
+      if(repeat) {
+        if (yourCountries.some((word) => word === oneCountry)) {
+          i--;
+        } else {
+          yourCountries.push(oneCountry);
+        }
+      } else {
+        yourCountries.push(oneCountry);
+      }
+    };
+
+    return checkTextDataType(dataType, yourCountries, 'getRandomRangeCountries');
+  },
 };
 
 // export { fishText };
@@ -187,4 +221,4 @@ const fishText = {
 
 // for testing cities
 
-console.log(fishText.getCountries({count: 10, lang: 'rus', dataType: 'array', repeat: true}));
+console.log(fishText.getRandomRangeCountries({min:10, max: 20, dataType: 'array', lang: 'rus'}));
