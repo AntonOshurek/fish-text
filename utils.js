@@ -57,7 +57,7 @@ const getRandomInt = (minValue, maxValue) => {
   return Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
 };
 
-const generateData = (dataArray, count) => {
+const generateData = (dataArray, count, repeat) => {
   let newData = [];
 
   for(let i = 0; i < count; i++) {
