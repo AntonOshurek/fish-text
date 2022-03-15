@@ -7,12 +7,20 @@ import { CITIES_ENG } from './cities/cities-eng.js';
 //COUNTRIES
 import { COUNTRIES_RUS } from './countries/countries-rus.js';
 import { COUNTRIES_ENG } from './countries/countries-eng.js';
+//NAMES
+import { NAMES_RUS } from './fullNames/names-rus.js';
+import { NAMES_ENG } from './fullNames/names-eng.js';
+//SURNAMES
+import { SURNAMES_RUS } from './fullNames/surnames-rus.js';
+import { SURNAMES_ENG } from './fullNames/surnames-eng.js';
 
 import { checkMinMaxValidate, checkCountValidate, getRandomInt, checkTextDataType, checkCountLength, generateData } from './utils.js';
 
 let wordsArray = WORDS_ENG;
 let citiesArray = CITIES_ENG;
 let countriesArray = COUNTRIES_ENG;
+let namesArray = NAMES_ENG;
+let surnamesArray = SURNAMES_ENG;
 
 export const fishText = {
 
@@ -130,12 +138,13 @@ export const fishText = {
 
     return checkTextDataType(dataType, result, 'getRandomRangeCountries');
   },
+
 };
 
 // for testing words
-  let result = fishText.getRandomRangeWords({min: 50, max: 60, dataType: 'array', lang: 'eng', repeat: true});
-  console.log(result)
+  // let result = fishText.getRandomRangeWords({min: 50, max: 60, dataType: 'array', lang: 'eng', repeat: true});
+  // console.log(result)
 
 // for testing cities
 
-console.log(fishText.getCountries({ dataType: 'string', lang: 'eng', repeat: false}));
+// console.log(fishText.getCountries({ dataType: 'string', lang: 'eng', repeat: false}));
