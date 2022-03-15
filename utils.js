@@ -57,5 +57,24 @@ const getRandomInt = (minValue, maxValue) => {
   return Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
 };
 
+const generateData = (dataArray, count) => {
+  let newData = [];
 
-export { checkMinMaxValidate, checkCountValidate, getRandomInt, checkTextDataType, checkCountLength };
+  for(let i = 0; i < count; i++) {
+    const item = dataArray[getRandomInt(0, dataArray.length - 1)];
+
+    if(repeat) {
+      if (newData.some((word) => word === item)) {
+        i--;
+      } else {
+        newData.push(item);
+      }
+    } else {
+      newData.push(item);
+    }
+  };
+
+  return newData;
+};
+
+export { checkMinMaxValidate, checkCountValidate, getRandomInt, checkTextDataType, checkCountLength, generateData };
