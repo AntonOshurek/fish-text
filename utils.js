@@ -26,10 +26,14 @@ const checkMinMaxValidate = (min, max, functionName = 'getCities') => {
   return true;
 };
 
-const checkTextDataType = (dataType, data, functionName) => {
+const checkTextDataType = (dataType, data, functionName, punctuationMark = false) => {
   switch (dataType) {
     case 'string':
-      return data.join(' ').toLowerCase();
+      if(punctuationMark) {
+        return data.join(', ').toLowerCase();
+      } else {
+        return data.join(' ').toLowerCase();
+      }
     break;
     case 'array':
       return data;
@@ -57,5 +61,37 @@ const getRandomInt = (minValue, maxValue) => {
   return Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
 };
 
+const generateData = (dataArray, count, repeat) => {
+  let newData = [];
 
-export { checkMinMaxValidate, checkCountValidate, getRandomInt, checkTextDataType, checkCountLength };
+  for(let i = 0; i < count; i++) {
+    const item = dataArray[getRandomInt(0, dataArray.length - 1)];
+
+    if(repeat) {
+      if (newData.some((word) => word === item)) {
+        i--;
+      } else {
+        newData.push(item);
+      }
+    } else {
+      newData.push(item);
+    }
+  };
+
+  return newData;
+};
+
+const generateFullNames = (namesArray, surnamesArray, count) => {
+  let newData = [];
+
+  for(let i = 0; i < count; i++) {
+    const onename = namesArray[getRandomInt(0, namesArray.length - 1)];
+    const onesurname = surnamesArray[getRandomInt(0, surnamesArray.length - 1)];
+
+    newData.push(onename + ' ' + onesurname);
+  };
+
+  return newData;
+};
+
+export { checkMinMaxValidate, checkCountValidate, getRandomInt, checkTextDataType, checkCountLength, generateData, generateFullNames };
