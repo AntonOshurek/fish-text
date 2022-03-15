@@ -81,4 +81,17 @@ const generateData = (dataArray, count, repeat) => {
   return newData;
 };
 
-export { checkMinMaxValidate, checkCountValidate, getRandomInt, checkTextDataType, checkCountLength, generateData };
+const generateFullNames = (namesArray, surnamesArray, count) => {
+  let newData = [];
+
+  for(let i = 0; i < count; i++) {
+    const onename = namesArray[getRandomInt(0, namesArray.length - 1)];
+    const onesurname = surnamesArray[getRandomInt(0, surnamesArray.length - 1)];
+
+    newData.push(onename + ' ' + onesurname);
+  };
+
+  return newData;
+};
+
+export { checkMinMaxValidate, checkCountValidate, getRandomInt, checkTextDataType, checkCountLength, generateData, generateFullNames };
