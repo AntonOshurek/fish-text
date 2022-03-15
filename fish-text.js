@@ -14,7 +14,7 @@ let wordsArray = WORDS_ENG;
 let citiesArray = CITIES_ENG;
 let countriesArray = COUNTRIES_ENG;
 
-const fishText = {
+export const fishText = {
 
   'getWords': (options) => {
     let {count = 1, dataType = 'string', repeat = false, lang = 'eng'} = options;
@@ -132,12 +132,10 @@ const fishText = {
   },
 };
 
-// export { fishText };
-
 // for testing words
   let result = fishText.getRandomRangeWords({min: 50, max: 60, dataType: 'array', lang: 'eng', repeat: true});
   console.log(result)
 
 // for testing cities
 
-console.log(fishText.getCities({count: 20, dataType: 'array', lang: 'rus', repeat: false}));
+console.log(fishText.getCountries({ dataType: 'string', lang: 'eng', repeat: false}));
