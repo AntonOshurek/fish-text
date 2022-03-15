@@ -181,4 +181,4 @@ export const fishText = {
 
 // console.log(fishText.getCountries({ dataType: 'string', lang: 'eng', repeat: false}));
 
-console.log(fishText.getNames({count: 20, lang: 'rus', type: 'full', dataType: 'array'}))
+console.log(fishText.getCities({count: 10, lang: 'eng', dataType: 'array', repeat: true}))
