@@ -26,10 +26,14 @@ const checkMinMaxValidate = (min, max, functionName = 'getCities') => {
   return true;
 };
 
-const checkTextDataType = (dataType, data, functionName) => {
+const checkTextDataType = (dataType, data, functionName, punctuationMark = false) => {
   switch (dataType) {
     case 'string':
-      return data.join(' ').toLowerCase();
+      if(punctuationMark) {
+        return data.join(', ').toLowerCase();
+      } else {
+        return data.join(' ').toLowerCase();
+      }
     break;
     case 'array':
       return data;

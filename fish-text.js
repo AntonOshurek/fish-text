@@ -138,7 +138,53 @@ export const fishText = {
 
     return checkTextDataType(dataType, result, 'getRandomRangeCountries');
   },
+  'getNames': (options) => {
+    const {count = 1, dataType = 'string', repeat = false, lang = 'eng', type = 'full'} = options;
 
+    if(lang === 'rus') {
+      namesArray = NAMES_RUS;
+      surnamesArray = SURNAMES_RUS;
+    } else {
+      namesArray = NAMES_ENG;
+      surnamesArray = SURNAMES_ENG;
+    }
+
+    if (!checkCountValidate(count, 'getNames')) {
+      return
+    };
+
+    if(repeat && (checkCountLength(count, 'getCountries', 'country', namesArray.length) && checkCountLength(count, 'getCountries', 'country', surnamesArray.length))) {
+      return;
+    };
+
+    let result;
+
+    switch(type) {
+      case 'full':
+        let newData = [];
+
+        for(let i = 0; i < count; i++) {
+          const onename = namesArray[getRandomInt(0, namesArray.length - 1)];
+          const onesurname = surnamesArray[getRandomInt(0, surnamesArray.length - 1)];
+
+          newData.push(onename + ' ' + onesurname);
+        };
+
+
+        result = newData;
+        break;
+      case 'name':
+        result = generateData(namesArray, count, repeat);
+        break;
+      case 'surname':
+        result = generateData(surnamesArray, count, repeat);
+        break;
+        default:
+          console.error('error type parametr!');
+    };
+
+    return checkTextDataType(dataType, result, 'getNames', true);
+  },
 };
 
 // for testing words
@@ -148,3 +194,5 @@ export const fishText = {
 // for testing cities
 
 // console.log(fishText.getCountries({ dataType: 'string', lang: 'eng', repeat: false}));
+
+console.log(fishText.getNames({count: 20, lang: 'eng', type: 'full', dataType: 'string'}))
