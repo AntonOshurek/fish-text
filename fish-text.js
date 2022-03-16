@@ -181,4 +181,4 @@ export const fishText = {
 
 // console.log(fishText.getCountries({ dataType: 'string', lang: 'eng', repeat: false}));
 
-console.log(fishText.getRandomRangeCountries({min: 10, max: 20, lang: 'eng', dataType: 'array', repeat: true}))
+console.log(fishText.getNames({count: 10, type: 'full', lang: 'eng', dataType: 'array', repeat: true}))

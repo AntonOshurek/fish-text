@@ -33,6 +33,34 @@ import { fishText } from '../node_modules/fish-text/fish-text.js';
 
 ***
 
+### BASIC PARAMETERS
+
+Parameters accept only an object!
+Methods with the name ```getRandomRange...({})``` have two required parameters: min and max!
+
+```
+fishText.getRandomRangeWords({min: 10, max: 20});
+```
+
+If you want to get only one word, then you just need to pass an empty object to the function parameters.
+An empty object can only be accepted by functions with the name ```get...({})```.
+
+```
+fishText.getWords({});
+```
+
+* **```dataType```** - data type to be returned.
+  **optional** parameter! the default data type is ```string```.
+  there are 3 data options: ```string```, ```array```, ```object```
+* **```lang```** - ```'eng'``` or ```'rus'```
+  **optional parameter!** the default language is English.
+* **```repeat```** - ```true``` or ```false```
+  **optional parameter! Default value is** ```false```
+  if you need all words to be unique, then set the parameter ```true```, and vice versa.
+  **Attention!** with the "repeat" parameter enabled, it is impossible to get unique words in an amount exceeding the number of words in the library!
+
+***
+
 1. ### GET A CERTAIN NUMBER OF WORDS.
 
 #### **Method ```getWords()```**
@@ -49,25 +77,12 @@ import { fishText } from '../node_modules/fish-text/fish-text.js';
 
 ![getWords function result](./readme-images/example--result-getWords.png)
 
-##### **PARAMETRS!**
-an object is accepted as a parameter!
-If you want to get only one word, then you just need to pass an empty object to the function parameters.
-```
-fishText.getWords({});
-```
-* **```wordsCount```** - number of words
-  **optional parameter.** if you do not specify a count, then one word will be returned to you.
-* **```dataType```** - data type to be returned.
-  **optional** parameter! the default data type is ```string```.
-  there are 3 data options: ```string```, ```array```, ```object```
-* **```lang```** - ```'eng'``` or ```'rus'```
-  **optional parameter!** the default language is English.
-* **```repeat```** - ```true``` or ```false```
-  **optional parameter! Default value is** ```false```
-  if you need all words to be unique, then set the parameter ```true```, and vice versa.
-  **Attention!** with the "repeat" parameter enabled, it is impossible to get unique words in an amount exceeding the number of words in the library!
+##### **SPECIAL PARAMETERS!**
 
-  ***
+* **```count```** - number of words
+  **optional parameter.** if you do not specify a count, then one word will be returned to you.
+
+***
 
 2. ### GET A RANDOM NUMBER OF WORDS FROM A RANGE.
 
@@ -86,16 +101,12 @@ fishText.getWords({});
 
 ![getWords function result](./readme-images/example--result-getRandomRangeWords.png)
 
-##### **PARAMETRS**
-an object is accepted as a parameter!
-```
-fishText.getCities({min: 10, max: 20});
-```
+##### **SPECIAL PARAMETERS!**
+
 * **```min```** - minimum number of words.
   **this is a required parameter!**
 * **```min```** - maximum number of words.
   **this is a required parameter!**
-* **other parameters are the same as in the example above;)**
 
 ***
 
@@ -115,25 +126,12 @@ fishText.getCities({min: 10, max: 20});
 
 ![getCities function result](./readme-images/example--result-getCities.png)
 
-##### **PARAMETRS!**
-an object is accepted as a parameter!
-If you want to get only one city name, then you just need to pass an empty object to the function parameters.
-```
-fishText.getCities({});
-```
+##### **SPECIAL PARAMETERS!**
+
 * **```count```** - number of cities
   **optional parameter.** if you do not specify a count, then one city will be returned to you.
-* **```dataType```** - data type to be returned.
-  **optional** parameter! the default data type is ```string```.
-  there are 3 data options: ```string```, ```array```, ```object```
-* **```lang```** - ```'eng'``` or ```'rus'```
-  **optional parameter!** the default language is English.
-* **```repeat```** - ```true``` or ```false```
-  **optional parameter! Default value is** ```false```
-  if you need all words to be unique, then set the parameter ```true```, and vice versa.
-  **Attention!** with the "repeat" parameter enabled, it is impossible to get unique words in an amount exceeding the number of words in the library!
 
-  ***
+***
 
 4. ### GET A RANDOM NUMBER OF CITIES FROM A RANGE
 
@@ -151,16 +149,12 @@ fishText.getCities({});
 
 ![getRandomRangeCities function result](./readme-images/example--result-getRandomRangeCities.png)
 
-##### **PARAMETRS**
-an object is accepted as a parameter!
-```
-fishText.getCities({min: 10, max: 20});
-```
+##### **SPECIAL PARAMETERS!**
+
 * **```min```** - minimum number of cities.
   **this is a required parameter!**
 * **```min```** - maximum number of cities.
   **this is a required parameter!**
-* **other parameters are the same as in the example above;)**
 
 ***
 
@@ -180,25 +174,12 @@ fishText.getCities({min: 10, max: 20});
 
 ![getCountries function result](./readme-images/example--result-getCountries.png)
 
-##### **PARAMETRS!**
-an object is accepted as a parameter!
-If you want to get only one country name, then you just need to pass an empty object to the function parameters.
-```
-fishText.getCountries({});
-```
+##### **SPECIAL PARAMETERS!**
+
 * **```count```** - number of countries
   **optional parameter.** if you do not specify a count, then one city will be returned to you.
-* **```dataType```** - data type to be returned.
-  **optional** parameter! the default data type is ```string```.
-  there are 3 data options: ```string```, ```array```, ```object```
-* **```lang```** - ```'eng'``` or ```'rus'```
-  **optional parameter!** the default language is English.
-* **```repeat```** - ```true``` or ```false```
-  **optional parameter! Default value is** ```false```
-  if you need all words to be unique, then set the parameter ```true```, and vice versa.
-  **Attention!** with the "repeat" parameter enabled, it is impossible to get unique words in an amount exceeding the number of words in the library!
 
-  ***
+***
 
 6. ### GET A RANDOM NUMBER OF COUNTRIES FROM A RANGE
 
@@ -216,15 +197,37 @@ fishText.getCountries({});
 
 ![getRandomRangeCountries function result](./readme-images/example--result-getRandomRangeCountries.png)
 
-##### **PARAMETRS**
-an object is accepted as a parameter!
-```
-fishText.getRandomRangeCountries({min: 10, max: 20});
-```
+##### **SPECIAL PARAMETERS!**
+
 * **```min```** - minimum number of countries.
   **this is a required parameter!**
 * **```min```** - maximum number of countries.
   **this is a required parameter!**
-* **other parameters are the same as in the example above;)**
 
 ***
+
+6. ### GET A CERTAIN NUMBER OF NAMES AND SURNAMES.
+
+#### **Method ```getNames()```**
+*You will get exactly as many names or surnames as you write in the parameters*
+*You can get either a separate first or last name, or get a full name.*
+
+*let's try to get 10 fullnames in English in the array:)*
+* **example!**
+```
+  let names = fishText.getNames({count: 10, type: 'full', lang: 'eng', dataType: 'array', repeat: true});
+
+  console.log(names);
+```
+* **result**
+
+![getCountries function result](./readme-images/example--result-getNames.png)
+
+##### **SPECIAL PARAMETERS!**
+
+* **```count```** - number of countries
+  **optional parameter.** if you do not specify a count, then one city will be returned to you.
+* **```type```** - maximum number of countries.
+  The type of name to get. you can get a separate first name, last name or full name
+  **optional parameter.** default value ```full```.
+  there are 3 data options: ```full```, ```name```, ```surname```.
