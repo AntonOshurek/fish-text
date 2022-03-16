@@ -250,4 +250,4 @@ fishText.getWords({});
 
 [twitter](https://twitter.com/AOshurek)
 [instagram](https://www.instagram.com/oshurekweb/)
-[Email](oshurekweb@gmail.com)
+Email - oshurekweb@gmail.com
