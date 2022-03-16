@@ -4,10 +4,13 @@ we work with two languages - **Russian** and **English**
 ***
 
 ## we use real words in Russian and English!
+
 * **5000 Russian lang words**
 * **1954 English lang words**
+
 * **365 Cities in English lang**
 * **366 Cities in Russian lang**
+
 * **229 Countries in English lang**
 * **229 Countries in Russian lang**
 
@@ -242,3 +245,9 @@ fishText.getWords({});
   **optional parameter.** default value ```full```.
   there are 3 data options: ```full```, ```name```, ```surname```.
 * **This method does not have a 'repeat' parameter!**
+
+### subscribe me :)
+
+[twitter](https://twitter.com/AOshurek)
+[instagram](https://www.instagram.com/oshurekweb/)
+[Email](oshurekweb@gmail.com)
