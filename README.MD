@@ -4,8 +4,18 @@ we work with two languages - **Russian** and **English**
 ***
 
 ## we use real words in Russian and English!
-* **5000 Russian words**
-* **1954 English words**
+* **5000 Russian lang words**
+* **1954 English lang words**
+* **365 Cities in English lang**
+* **366 Cities in Russian lang**
+* **229 Countries in English lang**
+* **229 Countries in Russian lang**
+
+* **456 Russian Names**
+* **2738 English Names :)**
+* **503 Russian surnames**
+* **1000 English surnames**
+
 ***The number of catches and languages is expanding over time!***
 ***This will help you generate test data for your project!***
 
@@ -210,12 +220,12 @@ fishText.getWords({});
 
 #### **Method ```getNames()```**
 *You will get exactly as many names or surnames as you write in the parameters*
-*You can get either a separate first or last name, or get a full name.*
+*You can get either a separate first name or surname, or get a full name.*
 
 *let's try to get 10 fullnames in English in the array:)*
 * **example!**
 ```
-  let names = fishText.getNames({count: 10, type: 'full', lang: 'eng', dataType: 'array', repeat: true});
+  let names = fishText.getNames({count: 10, type: 'full', lang: 'eng', dataType: 'array'});
 
   console.log(names);
 ```
@@ -228,6 +238,7 @@ fishText.getWords({});
 * **```count```** - number of countries
   **optional parameter.** if you do not specify a count, then one city will be returned to you.
 * **```type```** - maximum number of countries.
-  The type of name to get. you can get a separate first name, last name or full name
+  The type of name to get. you can get a separate first name, surname or full name (name + surname)
   **optional parameter.** default value ```full```.
   there are 3 data options: ```full```, ```name```, ```surname```.
+* **This method does not have a 'repeat' parameter!**
