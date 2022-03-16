@@ -22,7 +22,7 @@ let countriesArray = COUNTRIES_ENG;
 let namesArray = NAMES_ENG;
 let surnamesArray = SURNAMES_ENG;
 
-export const fishText = {
+const fishText = {
 
   'getWords': (options) => {
     let {count = 1, dataType = 'string', repeat = false, lang = 'eng'} = options;
@@ -173,12 +173,4 @@ export const fishText = {
   },
 };
 
-// for testing words
-  // let result = fishText.getRandomRangeWords({min: 50, max: 60, dataType: 'array', lang: 'eng', repeat: true});
-  // console.log(result)
-
-// for testing cities
-
-// console.log(fishText.getCountries({ dataType: 'string', lang: 'eng', repeat: false}));
-
-console.log(fishText.getNames({count: 10, type: 'full', lang: 'eng', dataType: 'array', repeat: true}))
+export { fishText };
