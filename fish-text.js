@@ -160,10 +160,10 @@ const fishText = {
         result = generateFullNames(namesArray, surnamesArray, count);
         break;
       case 'name':
-        result = generateData(namesArray, count, repeat);
+        result = generateData(namesArray, count);
         break;
       case 'surname':
-        result = generateData(surnamesArray, count, repeat);
+        result = generateData(surnamesArray, count);
         break;
         default:
           console.error('ERROR! Invalid type parametr in getNames function!');
