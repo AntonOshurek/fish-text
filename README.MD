@@ -219,7 +219,7 @@ fishText.getWords({});
 
 ***
 
-6. ### GET A CERTAIN NUMBER OF NAMES AND SURNAMES.
+7. ### GET A CERTAIN NUMBER OF NAMES AND SURNAMES.
 
 #### **Method ```getNames()```**
 *You will get exactly as many names or surnames as you write in the parameters*
